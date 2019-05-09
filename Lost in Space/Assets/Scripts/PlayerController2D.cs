@@ -6,10 +6,12 @@ public class PlayerController2D : MonoBehaviour
 {
     public PlayerMovement movement;
     public float runSpeed = 40f;
+    public float jetpackFuel = 100;
+    public int jetpackCombustion = 100;
+    public int jetpackRefill = 10;
     float horizontalMove = 0f;
     bool jump = false;
     bool jetpack = false;
-    public float jetpackFuel = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +21,9 @@ public class PlayerController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (jetpack == false && jetpackFuel != 100)
+        if (jetpack == false && jetpackFuel < 100)
         {
-            jetpackFuel = jetpackFuel + 10 * Time.fixedDeltaTime;
+            jetpackFuel = jetpackFuel + jetpackRefill * Time.fixedDeltaTime;
         }
         
     }
@@ -37,9 +39,10 @@ public class PlayerController2D : MonoBehaviour
         }
         if (Input.GetButton("Jetpack") && (jetpackFuel > 0 ))
         {
-            jetpackFuel = jetpackFuel - 100 * Time.fixedDeltaTime;
+            jetpackFuel = jetpackFuel - jetpackCombustion * Time.fixedDeltaTime;
             jetpack = true;
         }
         movement.Move(horizontalMove * Time.fixedDeltaTime, false, jump, jetpack);
+
     }
 }
