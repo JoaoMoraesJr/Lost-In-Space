@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController2D : MonoBehaviour
 {
     public PlayerMovement movement;
+    public GameObject Fire;
     public float runSpeed = 40f;
     public float jetpackFuel = 100;
     public int jetpackCombustion = 100;
@@ -41,6 +42,12 @@ public class PlayerController2D : MonoBehaviour
         {
             jetpackFuel = jetpackFuel - jetpackCombustion * Time.fixedDeltaTime;
             jetpack = true;
+        }
+        if (Input.GetButton("Fire1"))
+        {
+            //Debug.Log("Fire");
+            GameObject fire1 = Instantiate(Fire);
+            fire1.transform.position = transform.position;
         }
         movement.Move(horizontalMove * Time.fixedDeltaTime, false, jump, jetpack);
 

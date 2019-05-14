@@ -112,6 +112,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &112653752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7278039875339336269, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089460034141054213, guid: 0b01a006fde4a0140ac229876e9fe8c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b01a006fde4a0140ac229876e9fe8c2, type: 3}
 --- !u!1 &150338879
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +380,7 @@ GameObject:
   - component: {fileID: 766506639}
   - component: {fileID: 766506638}
   - component: {fileID: 766506637}
+  - component: {fileID: 766506640}
   m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -377,7 +447,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -406,6 +476,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &766506640
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766506636}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &843623451
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1669511111}
+  Fire: {fileID: 7278039875339336269, guid: 0b01a006fde4a0140ac229876e9fe8c2, type: 3}
   runSpeed: 30
   jetpackFuel: 100
   jetpackCombustion: 100
@@ -688,7 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSmoothing: 0.05
-  m_JumpForce: 10
+  m_JumpForce: 15
   m_JetpackForce: 1
   m_WhatIsGround:
     serializedVersion: 2
