@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2089460034141054213}
+  - component: {fileID: 3826238144579037040}
   - component: {fileID: 4678200631354719282}
   - component: {fileID: 5005998900821808797}
-  - component: {fileID: 3826238144579037040}
   - component: {fileID: 1339957547}
   m_Layer: 0
   m_Name: Particle System
@@ -34,6 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 90, z: 90}
+--- !u!114 &3826238144579037040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278039875339336269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fabde2897c1e747ac12ead2c2236dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireVelocity: 500
+  maxLifeTime: 100
+  currentTime: 0
 --- !u!198 &4678200631354719282
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4700,19 +4715,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &3826238144579037040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7278039875339336269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72fabde2897c1e747ac12ead2c2236dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FireVelocity: 1
 --- !u!61 &1339957547
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -313,6 +314,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6b9af1542925c4683a1627c37c445b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1669511112}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: -10}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -760,11 +776,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1669511111}
-  Fire: {fileID: 7278039875339336269, guid: 0b01a006fde4a0140ac229876e9fe8c2, type: 3}
   runSpeed: 30
-  jetpackFuel: 100
   jetpackCombustion: 100
   jetpackRefill: 10
+  Fire: {fileID: 7278039875339336269, guid: 0b01a006fde4a0140ac229876e9fe8c2, type: 3}
+  shotFrequency: 150
+  shotRefill: 0
 --- !u!114 &1669511111
 MonoBehaviour:
   m_ObjectHideFlags: 0

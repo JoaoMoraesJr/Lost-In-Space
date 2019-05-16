@@ -5,14 +5,20 @@ using UnityEngine;
 public class PlayerController2D : MonoBehaviour
 {
     public PlayerMovement movement;
-    public GameObject Fire;
     public float runSpeed = 40f;
-    public float jetpackFuel = 100;
+    private float horizontalMove = 0f;
+    private bool jump = false;
+    private bool facingRight = true;
+
+    private bool jetpack = false;
+    private float jetpackFuel = 100;
     public int jetpackCombustion = 100;
     public int jetpackRefill = 10;
-    float horizontalMove = 0f;
-    bool jump = false;
-    bool jetpack = false;
+
+    public GameObject Fire;
+    public float shotFrequency = 10;
+    public float shotRefill = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +32,25 @@ public class PlayerController2D : MonoBehaviour
         {
             jetpackFuel = jetpackFuel + jetpackRefill * Time.fixedDeltaTime;
         }
+
+        if (shotRefill < 100)
+        {
+            shotRefill += shotFrequency * Time.fixedDeltaTime;
+        }
         
     }
 
     private void FixedUpdate()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if (horizontalMove > 0)
+        {
+            facingRight = true;
+        } else if (horizontalMove < 0)
+        {
+            facingRight = false;
+        }
+
         jump = false;
         jetpack = false;
         if (Input.GetButtonDown("Jump"))
@@ -43,11 +62,12 @@ public class PlayerController2D : MonoBehaviour
             jetpackFuel = jetpackFuel - jetpackCombustion * Time.fixedDeltaTime;
             jetpack = true;
         }
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && shotRefill >= 100)
         {
             //Debug.Log("Fire");
+            shotRefill = 0;
             GameObject fire1 = Instantiate(Fire);
-            fire1.transform.position = transform.position;
+            fire1.GetComponent<FireScript>().setInitialPosition(transform.position, facingRight);
         }
         movement.Move(horizontalMove * Time.fixedDeltaTime, false, jump, jetpack);
 
