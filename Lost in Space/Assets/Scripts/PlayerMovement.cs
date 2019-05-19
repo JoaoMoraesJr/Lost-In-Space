@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public Animator animator;
+
     private Rigidbody2D m_Rigidbody2D;
     private Vector3 m_Velocity = Vector3.zero;
     private bool m_FacingRight = true;
@@ -44,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(m_Rigidbody2D.velocity);
     }
 
     private void FixedUpdate()
@@ -60,9 +62,12 @@ public class PlayerMovement : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 m_Grounded = true;
-                //Debug.Log("Is Grounded");
+                // Debug.Log("Is Grounded");
                 if (!wasGrounded)
+                {
+                    Debug.Log("Is Grounded");
                     OnLandEvent.Invoke();
+                }
             }
         }
     }
@@ -93,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Add a vertical force to the player.
                 //m_Grounded = false;
+                //animator.SetBool("isJumping", true);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce), ForceMode2D.Impulse);
             }
 
