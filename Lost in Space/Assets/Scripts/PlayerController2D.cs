@@ -59,7 +59,7 @@ public class PlayerController2D : MonoBehaviour
             facingRight = false;
         }
 
-        if (GetComponent<Rigidbody2D>().velocity.y == 0)
+        if (GetComponent<Rigidbody2D>().velocity.y == 0 )
         {
             animator.SetBool("isJumping", false);
         }

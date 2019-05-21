@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(m_Rigidbody2D.velocity);
+
     }
 
     private void FixedUpdate()

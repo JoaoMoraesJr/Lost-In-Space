@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public float FollowSpeed = 2f;
+    public Transform Target;
 
-    public Transform target;
-    private Vector3 m_Velocity = Vector3.zero;
-
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
-
-    void FixedUpdate()
+    private void Update()
     {
-        Vector3 desiredPosition = target.position + offset;
-        //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        //transform.position = smoothedPosition;
-        transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref m_Velocity, smoothSpeed);
-
-        transform.LookAt(target);
+        Vector3 newPosition = Target.position;
+        newPosition.z = -10;
+        transform.position = Vector3.Slerp(transform.position, newPosition, FollowSpeed * Time.deltaTime);
     }
 }
