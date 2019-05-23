@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int health = 100;
+    public float maxHealth = 100;
+    public float health = 100;
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,8 +26,9 @@ public class Health : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void takeDamage(float damage)
     {
         health -= damage;
+        Debug.Log("Actual health: " + health);
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5005998900821808797}
   - component: {fileID: 5684505162926723619}
   - component: {fileID: 5755878881980692173}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +50,7 @@ MonoBehaviour:
   FireVelocity: 500
   maxLifeTime: 100
   currentTime: 0
+  damage: 10
 --- !u!198 &4678200631354719282
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -58,8 +58,9 @@ public class PlayerController2D : MonoBehaviour
         {
             facingRight = false;
         }
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
 
-        if (GetComponent<Rigidbody2D>().velocity.y == 0 )
+        if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.01f )
         {
             animator.SetBool("isJumping", false);
         }
@@ -86,7 +87,7 @@ public class PlayerController2D : MonoBehaviour
             //Debug.Log("Fire");
             shotRefill = 0;
             GameObject fire1 = Instantiate(Fire);
-            fire1.GetComponent<FireScript>().setInitialPosition(transform.position, facingRight);
+            fire1.GetComponent<Projectile>().setInitialPosition(transform.position, facingRight);
         }
         movement.Move(horizontalMove * Time.fixedDeltaTime, false, jump, jetpack);
 

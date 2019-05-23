@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireScript : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     private Rigidbody2D m_Rigidbody2D;
     public float FireVelocity = 100f;
     private Vector3 m_Velocity = Vector3.zero;
     public float maxLifeTime = 10f;
     public float currentTime = 0f;
+    public float damage = 10f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,7 +29,7 @@ public class FireScript : MonoBehaviour
 
     public void setInitialPosition (Vector3 pos, bool right)
     {
-        transform.position = pos;
+        transform.position = new Vector3 ((pos.x + 1.2f), (pos.y + 0.8f), pos.z);
         setDirection(right);
     }
 
