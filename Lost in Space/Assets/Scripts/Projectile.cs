@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     private Rigidbody2D m_Rigidbody2D;
     public float FireVelocity = 100f;
+    public LayerMask TargetLayer;
     private Vector3 m_Velocity = Vector3.zero;
     public float maxLifeTime = 10f;
     public float currentTime = 0f;
@@ -53,5 +54,10 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Dissipate()
+    {
+        Destroy(gameObject);
     }
 }

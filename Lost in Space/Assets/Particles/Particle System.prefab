@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fabde2897c1e747ac12ead2c2236dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireVelocity: 500
+  FireVelocity: 1000
   maxLifeTime: 100
   currentTime: 0
   damage: 10
