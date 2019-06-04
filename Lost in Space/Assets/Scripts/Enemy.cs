@@ -6,10 +6,10 @@ public class Enemy : MonoBehaviour
 {
     public Health health;
     public Shooting gun;
-    const float RadiusDetection = 15f;
-    public LayerMask m_WhatIsPlayer;
-    public Transform m_Radar;
-    private bool m_Alerted;
+    public LayerMask WhatIsPlayer;
+    public float RadiusDetection = 15f;
+    public Transform Radar;
+    private bool Alerted;
     void Awake()
     {
         health = GetComponent<Health>();
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_Alerted)
+        if (Alerted)
         {
             gun.Shot(false);
         }
@@ -32,22 +32,18 @@ public class Enemy : MonoBehaviour
 
    private void FixedUpdate()
    {
-        Debug.Log(m_Alerted);
-        bool wasAlerted = m_Alerted;
-        m_Alerted = false;
-
-        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_Radar.position, RadiusDetection, m_WhatIsPlayer);
+        bool wasAlerted = Alerted;
+        Alerted = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(Radar.position, RadiusDetection, WhatIsPlayer);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
             {
-                m_Alerted = true;
-                Debug.Log("Alerted!!");
+                Alerted = true;
+                //Debug.Log("Alerted!!");
                 if (!wasAlerted)
                 {
-                    Debug.Log("not Alerted");
+                    //Debug.Log("not Alerted");
                 }
             }
         }
@@ -57,7 +53,7 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
         {
-            if (col.GetComponent<Projectile>().TargetLayer == LayerMask.NameToLayer("Enemy"))
+            if (Mathf.Log(col.GetComponent<Projectile>().TargetLayer.value, 2) == LayerMask.NameToLayer("Enemy"))
             {
                 health.takeDamage(col.GetComponent<Projectile>().damage);
                 col.GetComponent<Projectile>().Dissipate();

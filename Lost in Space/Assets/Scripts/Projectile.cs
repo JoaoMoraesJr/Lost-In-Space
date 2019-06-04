@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     private Rigidbody2D m_Rigidbody2D;
     public float FireVelocity = 100f;
+    public string TargetLayerName;
     public LayerMask TargetLayer;
     private Vector3 m_Velocity = Vector3.zero;
     public float maxLifeTime = 10f;
@@ -28,9 +29,9 @@ public class Projectile : MonoBehaviour
         
     }
 
-    public void setInitialPosition (Vector3 pos, bool right)
+    public void setInitialPosition (Transform pos, bool right)
     {
-        transform.position = new Vector3 ((pos.x + 1.2f), (pos.y + 0.8f), pos.z);
+        transform.position = new Vector3(pos.position.x, pos.position.y, pos.position.z);
         setDirection(right);
     }
 

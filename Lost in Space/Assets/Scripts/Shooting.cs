@@ -8,6 +8,8 @@ public class Shooting : MonoBehaviour
     public float shotFrequency = 10;
     public float shotRefill = 0;
     public LayerMask TargetLayer;
+    public Transform shotInitialPosition;
+    //Add shot velocity
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,7 @@ public class Shooting : MonoBehaviour
             shotRefill = 0;
             GameObject fire1 = Instantiate(Fire);
             fire1.GetComponent<Projectile>().TargetLayer = TargetLayer;
-            fire1.GetComponent<Projectile>().setInitialPosition(transform.position, Right);
+            fire1.GetComponent<Projectile>().setInitialPosition(shotInitialPosition, Right);
         }
     }
 }

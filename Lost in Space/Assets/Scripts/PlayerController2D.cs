@@ -17,9 +17,9 @@ public class PlayerController2D : MonoBehaviour
     public int jetpackCombustion = 100;
     public int jetpackRefill = 10;
 
-    public GameObject Fire;
-    public float shotFrequency = 10;
-    public float shotRefill = 0;
+    public Shooting gun;
+
+    public Health health;
 
     private void Awake()
     {
@@ -39,12 +39,6 @@ public class PlayerController2D : MonoBehaviour
         {
             jetpackFuel = jetpackFuel + jetpackRefill * Time.fixedDeltaTime;
         }
-
-        if (shotRefill < 100)
-        {
-            shotRefill += shotFrequency * Time.fixedDeltaTime;
-        }
-        
     }
 
     private void FixedUpdate()
@@ -82,13 +76,10 @@ public class PlayerController2D : MonoBehaviour
             jetpackFuel = jetpackFuel - jetpackCombustion * Time.fixedDeltaTime;
             jetpack = true;
         }
-        if (Input.GetButton("Fire1") && shotRefill >= 100)
+        if (Input.GetButton("Fire1"))
         {
             //Debug.Log("Fire");
-            shotRefill = 0;
-            GameObject fire1 = Instantiate(Fire);
-            fire1.GetComponent<Projectile>().TargetLayer = LayerMask.NameToLayer("Enemy");
-            fire1.GetComponent<Projectile>().setInitialPosition(transform.position, facingRight);
+            gun.Shot(facingRight);
         }
         movement.Move(horizontalMove * Time.fixedDeltaTime, false, jump, jetpack);
 
@@ -98,5 +89,18 @@ public class PlayerController2D : MonoBehaviour
     {
         Debug.Log("Stop jumping");
         //animator.SetBool("isJumping", false);
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+        {
+            if (Mathf.Log(col.GetComponent<Projectile>().TargetLayer.value, 2) == LayerMask.NameToLayer("Player"))
+            {
+                health.takeDamage(col.GetComponent<Projectile>().damage);
+                col.GetComponent<Projectile>().Dissipate();
+            }
+        }
+
     }
 }
