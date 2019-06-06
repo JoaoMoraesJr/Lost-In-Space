@@ -12,6 +12,9 @@ public class Projectile : MonoBehaviour
     public float maxLifeTime = 10f;
     public float currentTime = 0f;
     public float damage = 10f;
+
+    public ParticleSystem shotParticles;
+    public ParticleSystem dissipateParticle;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,6 +36,7 @@ public class Projectile : MonoBehaviour
     {
         transform.position = new Vector3(pos.position.x, pos.position.y, pos.position.z);
         setDirection(right);
+        shotParticles.Play();
     }
 
     private void setDirection(bool right)
@@ -59,6 +63,10 @@ public class Projectile : MonoBehaviour
 
     public void Dissipate()
     {
+        Debug.Log("Dissipate");
+        ParticleSystem aux = Instantiate(dissipateParticle, transform.position, Quaternion.identity);
+        //dissipateParticle.transform.position = transform.position;
+        aux.Play();
         Destroy(gameObject);
     }
 }
