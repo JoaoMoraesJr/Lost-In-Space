@@ -9,7 +9,10 @@ public class Enemy : MonoBehaviour
     public LayerMask WhatIsPlayer;
     public float RadiusDetection = 15f;
     public Transform Radar;
+    public int AttackType = 1;
     private bool Alerted;
+    private Transform attackTarget;
+    public FlyingAttack flying;
     void Awake()
     {
         health = GetComponent<Health>();
@@ -26,7 +29,14 @@ public class Enemy : MonoBehaviour
     {
         if (Alerted)
         {
-            gun.Shot(false);
+            if (AttackType == 1)
+            {
+                gun.Shot(false);
+            }
+            if (AttackType == 2)
+            {
+                flying.Attack(attackTarget.position);
+            }
         }
     }
 
@@ -40,6 +50,9 @@ public class Enemy : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 Alerted = true;
+                attackTarget = colliders[i].transform;
+                //Debug.Log(attackTarget.position);
+
                 //Debug.Log("Alerted!!");
                 if (!wasAlerted)
                 {

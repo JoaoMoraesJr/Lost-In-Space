@@ -102,5 +102,10 @@ public class PlayerController2D : MonoBehaviour
             }
         }
 
+        if (col.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Debug.Log("Atacado!");
+        }
+
     }
 }
