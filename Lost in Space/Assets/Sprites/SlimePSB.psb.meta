@@ -1,30 +1,26 @@
 fileFormatVersion: 2
-guid: b96e117ceb49c074ea030d1450e3cff5
+guid: d38fc3eee542c5c43bf140b0029f4313
 ScriptedImporter:
   fileIDToRecycleName:
     100000: SlimePSB_GO/SlimePSB_GO
-    100002: SlimePSB_GO/SlimePSB_GO/BasePaint
-    100004: SlimePSB_GO/SlimePSB_GO/Depht
-    100006: SlimePSB_GO/SlimePSB_GO/Layer4
-    100008: SlimePSB_GO/SlimePSB_GO/Layer5
-    100010: SlimePSB_GO/SlimePSB_GO/Linework1
+    100002: SlimePSB_GO/SlimePSB_GO/Body
+    100004: SlimePSB_GO/SlimePSB_GO/Eye1
+    100006: SlimePSB_GO/SlimePSB_GO/Eye2
+    100008: SlimePSB_GO/SlimePSB_GO/Mouth
     400000: SlimePSB_GO/SlimePSB_GO/Transform
-    400002: SlimePSB_GO/SlimePSB_GO/BasePaint/Transform
-    400004: SlimePSB_GO/SlimePSB_GO/Depht/Transform
-    400006: SlimePSB_GO/SlimePSB_GO/Layer4/Transform
-    400008: SlimePSB_GO/SlimePSB_GO/Layer5/Transform
-    400010: SlimePSB_GO/SlimePSB_GO/Linework1/Transform
+    400002: SlimePSB_GO/SlimePSB_GO/Body/Transform
+    400004: SlimePSB_GO/SlimePSB_GO/Eye1/Transform
+    400006: SlimePSB_GO/SlimePSB_GO/Eye2/Transform
+    400008: SlimePSB_GO/SlimePSB_GO/Mouth/Transform
     2800000: SlimePSB
-    21200000: SlimePSB_GO/SlimePSB_GO/BasePaint/SpriteRenderer
-    21200002: SlimePSB_GO/SlimePSB_GO/Depht/SpriteRenderer
-    21200004: SlimePSB_GO/SlimePSB_GO/Layer4/SpriteRenderer
-    21200006: SlimePSB_GO/SlimePSB_GO/Layer5/SpriteRenderer
-    21200008: SlimePSB_GO/SlimePSB_GO/Linework1/SpriteRenderer
-    21300000: a6e7adfe88c1415448d20761a809f452
-    21300002: 1db684da12f96c0449f63afdb23874f4
-    21300004: 34dd5af0ccf765f4ea9da85fb5dc0526
-    21300006: b292644aa738de3498f1bf0a82fc6c26
-    21300008: d0936de05542b1c47b645c80501c0fbc
+    21200000: SlimePSB_GO/SlimePSB_GO/Body/SpriteRenderer
+    21200002: SlimePSB_GO/SlimePSB_GO/Eye1/SpriteRenderer
+    21200004: SlimePSB_GO/SlimePSB_GO/Eye2/SpriteRenderer
+    21200006: SlimePSB_GO/SlimePSB_GO/Mouth/SpriteRenderer
+    21300000: 5bb5c5c4f02ef144693348b0958994ad
+    21300002: 55e692cc45180804e8b2c64240409a99
+    21300004: 8031c43a1d7d7a140a6ec6f9fab51a6e
+    21300006: c916f09257b297a4296825ee22088de4
     100100000: SlimePSB_GO
   externalObjects: {}
   userData: 
@@ -108,18 +104,18 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Linework1
+  - name: Eye1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 1309
-      width: 805
-      height: 605
-    spriteID: a6e7adfe88c1415448d20761a809f452
+      x: 821
+      y: 257
+      width: 129
+      height: 215
+    spriteID: 5bb5c5c4f02ef144693348b0958994ad
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -128,19 +124,40 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -128, y: 1062}
-  - name: Layer5
+    uvTransform: {x: 468, y: -280}
+  - name: Eye2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 836
+      x: 4
+      y: 621
+      width: 121
+      height: 189
+    spriteID: 55e692cc45180804e8b2c64240409a99
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -510, y: 56}
+  - name: Mouth
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 821
       y: 4
-      width: 309
-      height: 436
-    spriteID: 1db684da12f96c0449f63afdb23874f4
+      width: 191
+      height: 245
+    spriteID: 8031c43a1d7d7a140a6ec6f9fab51a6e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -149,29 +166,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 494, y: -307}
-  - name: Depht
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 836
-      y: 448
-      width: 280
-      height: 409
-    spriteID: 34dd5af0ccf765f4ea9da85fb5dc0526
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 481, y: 103}
-  - name: Layer4
+    uvTransform: {x: 393, y: -340}
+  - name: Body
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -180,30 +176,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 824
-      height: 680
-    spriteID: b292644aa738de3498f1bf0a82fc6c26
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -130, y: -180}
-  - name: BasePaint
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 692
       width: 809
       height: 609
-    spriteID: d0936de05542b1c47b645c80501c0fbc
+    spriteID: c916f09257b297a4296825ee22088de4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -212,17 +187,17 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -126, y: 446}
+    uvTransform: {x: -126, y: -242}
   platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
-  documentAlignment: 7
+  documentAlignment: 0
   importHiddenLayers: 0
-  importedTextureWidth: 2048
-  importedTextureHeight: 2048
+  importedTextureWidth: 1024
+  importedTextureHeight: 1024
   documentSize: {x: 1024, y: 1024}
-  textureActualWidth: 2048
-  textureActualHeight: 2048
+  textureActualWidth: 1024
+  textureActualHeight: 1024
   spritePackingTag: 
   resliceFromLayer: 0
   characterMode: 1
@@ -235,41 +210,34 @@ ScriptedImporter:
     spriteID: 00000000000000000000000000000000
     layerID: 3
     mosaicPosition: {x: 0, y: 0}
-  - name: Linework1
-    spriteName: Linework1
+  - name: Eye1
+    spriteName: Eye1
     isGroup: 0
     parentIndex: 0
-    spriteID: a6e7adfe88c1415448d20761a809f452
-    layerID: 4
-    mosaicPosition: {x: 4, y: 1309}
-  - name: Layer5
-    spriteName: Layer5
+    spriteID: 5bb5c5c4f02ef144693348b0958994ad
+    layerID: 18
+    mosaicPosition: {x: 821, y: 257}
+  - name: Eye2
+    spriteName: Eye2
     isGroup: 0
     parentIndex: 0
-    spriteID: 1db684da12f96c0449f63afdb23874f4
-    layerID: 5
-    mosaicPosition: {x: 836, y: 4}
-  - name: Depht
-    spriteName: Depht
+    spriteID: 55e692cc45180804e8b2c64240409a99
+    layerID: 20
+    mosaicPosition: {x: 4, y: 621}
+  - name: Mouth
+    spriteName: Mouth
     isGroup: 0
     parentIndex: 0
-    spriteID: 34dd5af0ccf765f4ea9da85fb5dc0526
-    layerID: 6
-    mosaicPosition: {x: 836, y: 448}
-  - name: Layer4
-    spriteName: Layer4
+    spriteID: 8031c43a1d7d7a140a6ec6f9fab51a6e
+    layerID: 21
+    mosaicPosition: {x: 821, y: 4}
+  - name: Body
+    spriteName: Body
     isGroup: 0
     parentIndex: 0
-    spriteID: b292644aa738de3498f1bf0a82fc6c26
-    layerID: 7
-    mosaicPosition: {x: 4, y: 4}
-  - name: BasePaint
-    spriteName: BasePaint
-    isGroup: 0
-    parentIndex: 0
-    spriteID: d0936de05542b1c47b645c80501c0fbc
+    spriteID: c916f09257b297a4296825ee22088de4
     layerID: 8
-    mosaicPosition: {x: 4, y: 692}
+    mosaicPosition: {x: 4, y: 4}
   characterData:
     bones: []
     parts: []
