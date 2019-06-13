@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
     [SerializeField] private float m_JumpForce = 400f; // Amount of force added when the player jumps.
     [SerializeField] private float m_JetpackForce = 400f;
+    [SerializeField] private float FallSpeed = -25f;
+    [SerializeField] private float LittleFallSpeed = -2f;
+    [SerializeField] private float FallThreshold = 2f;
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 
@@ -65,9 +68,28 @@ public class PlayerMovement : MonoBehaviour
                 // Debug.Log("Is Grounded");
                 if (!wasGrounded)
                 {
-                    Debug.Log("Is Grounded");
+                    //Debug.Log("Is Grounded");
                     OnLandEvent.Invoke();
                 }
+            }
+        }
+
+        if (!m_Grounded)
+        {
+            if (GetComponent<Rigidbody2D>().velocity.y < FallThreshold && GetComponent<Rigidbody2D>().velocity.y > 0.01f)
+            {
+                Debug.Log("DownImpulse");
+                m_Rigidbody2D.AddForce(new Vector2(0f, LittleFallSpeed), ForceMode2D.Impulse);
+            }
+            else if (GetComponent<Rigidbody2D>().velocity.y > -FallThreshold)
+            {
+                //Debug.Log("LargeDownImpulse");
+                m_Rigidbody2D.AddForce(new Vector2(0f, LittleFallSpeed), ForceMode2D.Impulse);
+            }
+            else if (GetComponent<Rigidbody2D>().velocity.y < -FallThreshold)
+            {
+                //Debug.Log("LargeDownImpulse");
+                m_Rigidbody2D.AddForce(new Vector2(0f, FallSpeed), ForceMode2D.Impulse);
             }
         }
     }

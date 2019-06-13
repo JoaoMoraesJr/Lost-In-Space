@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public float touchDamage = 25;
     public Health health;
     public Shooting gun;
     public LayerMask WhatIsPlayer;
@@ -13,6 +14,7 @@ public class Enemy : MonoBehaviour
     private bool Alerted;
     private Transform attackTarget;
     public FlyingAttack flying;
+
     void Awake()
     {
         health = GetComponent<Health>();

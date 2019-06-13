@@ -63,7 +63,7 @@ public class Projectile : MonoBehaviour
 
     public void Dissipate()
     {
-        Debug.Log("Dissipate");
+        //Debug.Log("Dissipate");
         ParticleSystem aux = Instantiate(dissipateParticle, transform.position, Quaternion.identity);
         //dissipateParticle.transform.position = transform.position;
         aux.Play();

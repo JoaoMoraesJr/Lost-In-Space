@@ -13,7 +13,7 @@ public class PlayerController2D : MonoBehaviour
     public Animator animator;
 
     private bool jetpack = false;
-    private float jetpackFuel = 100;
+    public float jetpackFuel = 100;
     public int jetpackCombustion = 100;
     public int jetpackRefill = 10;
 
@@ -52,7 +52,7 @@ public class PlayerController2D : MonoBehaviour
         {
             facingRight = false;
         }
-        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
+        Debug.Log(GetComponent<Rigidbody2D>().velocity);
 
         if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.01f )
         {
@@ -67,7 +67,7 @@ public class PlayerController2D : MonoBehaviour
         jetpack = false;
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("Jump!");
+            //Debug.Log("Jump!");
             jump = true;
             //animator.SetBool("isJumping", true);
         }
@@ -87,7 +87,7 @@ public class PlayerController2D : MonoBehaviour
 
     public void OnLanding ()
     {
-        Debug.Log("Stop jumping");
+        //Debug.Log("Stop jumping");
         //animator.SetBool("isJumping", false);
     }
 
@@ -104,7 +104,7 @@ public class PlayerController2D : MonoBehaviour
 
         if (col.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Debug.Log("Atacado!");
+            health.takeDamage (col.gameObject.GetComponent<Enemy>().touchDamage);
         }
 
     }
