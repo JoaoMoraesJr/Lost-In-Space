@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (GetComponent<Rigidbody2D>().velocity.y < FallThreshold && GetComponent<Rigidbody2D>().velocity.y > 0.01f)
             {
-                Debug.Log("DownImpulse");
+                //Debug.Log("DownImpulse");
                 m_Rigidbody2D.AddForce(new Vector2(0f, LittleFallSpeed), ForceMode2D.Impulse);
             }
             else if (GetComponent<Rigidbody2D>().velocity.y > -FallThreshold)

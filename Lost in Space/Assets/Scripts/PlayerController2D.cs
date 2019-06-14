@@ -16,6 +16,7 @@ public class PlayerController2D : MonoBehaviour
     public float jetpackFuel = 100;
     public int jetpackCombustion = 100;
     public int jetpackRefill = 10;
+    public ParticleSystem jetpackParticles;
 
     public Shooting gun;
 
@@ -52,7 +53,7 @@ public class PlayerController2D : MonoBehaviour
         {
             facingRight = false;
         }
-        Debug.Log(GetComponent<Rigidbody2D>().velocity);
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
 
         if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.01f )
         {
@@ -76,6 +77,21 @@ public class PlayerController2D : MonoBehaviour
             jetpackFuel = jetpackFuel - jetpackCombustion * Time.fixedDeltaTime;
             jetpack = true;
         }
+        if (jetpack)
+        {
+            if (!jetpackParticles.isPlaying)
+            {
+                Debug.Log("Active!");
+                jetpackParticles.Play();
+            }
+        }
+        else
+        {
+            Debug.Log("Deactivate!");
+            jetpackParticles.Stop();
+        }
+
+
         if (Input.GetButton("Fire1"))
         {
             //Debug.Log("Fire");
