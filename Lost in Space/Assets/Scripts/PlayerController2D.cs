@@ -12,11 +12,7 @@ public class PlayerController2D : MonoBehaviour
 
     public Animator animator;
 
-    private bool jetpack = false;
-    public float jetpackFuel = 100;
-    public int jetpackCombustion = 100;
-    public int jetpackRefill = 10;
-    public ParticleSystem jetpackParticles;
+    public Jetpack jetpack;
 
     public Shooting gun;
 
@@ -36,15 +32,12 @@ public class PlayerController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (jetpack == false && jetpackFuel < 100)
-        {
-            jetpackFuel = jetpackFuel + jetpackRefill * Time.fixedDeltaTime;
-        }
+        
     }
 
     private void FixedUpdate()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         if (horizontalMove > 0)
         {
@@ -65,30 +58,20 @@ public class PlayerController2D : MonoBehaviour
         }
 
         jump = false;
-        jetpack = false;
         if (Input.GetButtonDown("Jump"))
         {
             //Debug.Log("Jump!");
             jump = true;
             //animator.SetBool("isJumping", true);
         }
-        if (Input.GetButton("Jetpack") && (jetpackFuel > 0 ))
+
+        if (Input.GetButton("Jetpack") && !movement.isGrounded)
         {
-            jetpackFuel = jetpackFuel - jetpackCombustion * Time.fixedDeltaTime;
-            jetpack = true;
-        }
-        if (jetpack)
-        {
-            if (!jetpackParticles.isPlaying)
-            {
-                Debug.Log("Active!");
-                jetpackParticles.Play();
-            }
+            jetpack.Activate();
         }
         else
         {
-            Debug.Log("Deactivate!");
-            jetpackParticles.Stop();
+            jetpack.Deactivate();
         }
 
 
@@ -97,7 +80,7 @@ public class PlayerController2D : MonoBehaviour
             //Debug.Log("Fire");
             gun.Shot(facingRight);
         }
-        movement.Move(horizontalMove * Time.fixedDeltaTime, false, jump, jetpack);
+        movement.Move(horizontalMove * Time.fixedDeltaTime, false, jump, jetpack.isActive);
 
     }
 

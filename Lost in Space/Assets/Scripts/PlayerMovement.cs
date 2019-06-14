@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     private bool m_FacingRight = true;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
+    [SerializeField] private float runSpeed = 70;
     [SerializeField] private float m_JumpForce = 400f; // Amount of force added when the player jumps.
     [SerializeField] private float m_JetpackForce = 400f;
     [SerializeField] private float FallSpeed = -25f;
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-    private bool m_Grounded;            // Whether or not the player is grounded.
+    public bool isGrounded;            // Whether or not the player is grounded.
 
     [Header("Events")]
     [Space]
@@ -54,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool wasGrounded = m_Grounded;
-        m_Grounded = false;
+        bool wasGrounded = isGrounded;
+        isGrounded = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (colliders[i].gameObject != gameObject)
             {
-                m_Grounded = true;
+                isGrounded = true;
                 // Debug.Log("Is Grounded");
                 if (!wasGrounded)
                 {
@@ -74,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (!m_Grounded)
+        if (!isGrounded)
         {
             if (GetComponent<Rigidbody2D>().velocity.y < FallThreshold && GetComponent<Rigidbody2D>().velocity.y > 0.01f)
             {
@@ -96,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
   
     public void Move(float move, bool crouch, bool jump, bool jetpack)
     {
+        move = move * runSpeed;
         // Move the character by finding the target velocity
         Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
         // And then smoothing it out and applying it to the character
@@ -115,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
                 Flip();
             }
         // If the player should jump...
-        if (m_Grounded && jump)
+        if (isGrounded && jump)
             if (jump)
             {
                 // Add a vertical force to the player.
@@ -124,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce), ForceMode2D.Impulse);
             }
 
-        if (!m_Grounded && jetpack)
+        if (!isGrounded && jetpack)
         {
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JetpackForce), ForceMode2D.Impulse);
         }
