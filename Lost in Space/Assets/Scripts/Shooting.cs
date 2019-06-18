@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public enum ProjectileType { Straight, Falling };
+    public ProjectileType Type = ProjectileType.Straight;
     public GameObject Fire;
     public float shotFrequency = 10;
     public float shotRefill = 0;
@@ -33,7 +35,21 @@ public class Shooting : MonoBehaviour
             shotRefill = 0;
             GameObject fire1 = Instantiate(Fire);
             fire1.GetComponent<Projectile>().TargetLayer = TargetLayer;
+            //fire1.GetComponent<Projectile>().setType((int)Type);
             fire1.GetComponent<Projectile>().setInitialPosition(shotInitialPosition, Right);
         }
     }
+
+    public void Shot (Vector3 direction)
+    {
+        bool Right = true;
+        if (shotRefill >= 100)
+        {
+            shotRefill = 0;
+            GameObject fire1 = Instantiate(Fire);
+            fire1.GetComponent<Projectile>().TargetLayer = TargetLayer;
+            fire1.GetComponent<Projectile>().setInitialPosition(shotInitialPosition, Right);
+        }
+    }
+
 }

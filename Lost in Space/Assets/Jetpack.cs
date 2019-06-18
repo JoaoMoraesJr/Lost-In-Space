@@ -39,13 +39,11 @@ public class Jetpack : MonoBehaviour
         {
             if (!jetpackParticles.isPlaying)
             {
-                Debug.Log("Active!");
                 jetpackParticles.Play();
             }
         }
         else
         {
-            Debug.Log("Deactivate!");
             jetpackParticles.Stop();
         }
     }
