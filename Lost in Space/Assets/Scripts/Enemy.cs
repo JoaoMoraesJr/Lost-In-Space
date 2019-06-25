@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     private bool Alerted;
     private Transform attackTarget;
     public FlyingAttack flying;
+    public bool FacingRight = false;
 
     void Awake()
     {
@@ -33,7 +34,11 @@ public class Enemy : MonoBehaviour
         {
             if (AttackType == 1)
             {
-                gun.Shot(false);
+                if (attackTarget != null && (!FacingRight && attackTarget.position.x > transform.position.x) || (FacingRight && attackTarget.position.x < transform.position.x))
+                {
+                    Flip();
+                }
+                gun.Shot(FacingRight);
             }
             if (AttackType == 2)
             {
@@ -77,4 +82,15 @@ public class Enemy : MonoBehaviour
         
     }
 
+
+    private void Flip()
+    {
+        // Switch the way the player is labelled as facing.
+        FacingRight = !FacingRight;
+
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
 }

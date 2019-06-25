@@ -144,7 +144,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &2928070111717143877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   Radar: {fileID: 2928070110742332748}
   AttackType: 1
   flying: {fileID: 0}
+  FacingRight: 0
 --- !u!114 &2928070111717143882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2a383753aa1d348a5c7c54b7d5073f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
   Fire: {fileID: 7278039875339336269, guid: 4243b94efc90ac74e9c641ebf6977de5, type: 3}
   shotFrequency: 50
   shotRefill: 0
