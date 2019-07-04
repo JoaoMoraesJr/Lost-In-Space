@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject Boss;
+    public Animator winAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,13 @@ public class GameManager : MonoBehaviour
         if (Player.GetComponent<Health>().health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            SceneManager.LoadScene(0, LoadSceneMode.Additive);
+            //SceneManager.LoadScene(0, LoadSceneMode.Additive);
         }
+
+        if (Boss.GetComponent<Health>().health <= 0)
+        {
+            winAnim.SetBool("BossDead", true);
+        }
+
     }
 }

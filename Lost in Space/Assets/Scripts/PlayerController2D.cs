@@ -18,6 +18,7 @@ public class PlayerController2D : MonoBehaviour
 
     public Health health;
 
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
